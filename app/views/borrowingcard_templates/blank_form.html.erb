@@ -1,0 +1,35 @@
+<h1>
+  Add a new borrowingcard
+</h1>
+
+<hr>
+
+<%= render("borrowingcard_templates/validation_failures.html.erb") %>
+
+<form action="/insert_borrowingcard_record" method="post">
+  <div>
+    <label for="borrower_id">
+      Borrower
+    </label>
+
+    <input type="text" id="borrower_id" name="borrower_id" value="<%= @borrowingcard.borrower_id %>">
+  </div>
+
+  <div>
+    <label for="book_id">
+      Book
+    </label>
+
+    <input type="text" id="book_id" name="book_id" value="<%= @borrowingcard.book_id %>">
+  </div>
+
+  <button>
+    Create borrowingcard
+  </button>
+</form>
+
+<hr>
+
+<a href="/borrowingcards">
+  Go back
+</a>

@@ -1,0 +1,66 @@
+<h1>
+  Edit book #<%= @book.id %>
+</h1>
+
+<hr>
+
+<%= render("book_templates/validation_failures.html.erb") %>
+
+<form action="/update_book_record/<%= @book.id %>" method="post">
+  <div>
+    <label for="title">
+      Title
+    </label>
+
+    <textarea id="title" name="title" rows="3"><%= @book.title %></textarea>
+  </div>
+
+  <div>
+    <label for="author">
+      Author
+    </label>
+
+    <textarea id="author" name="author" rows="3"><%= @book.author %></textarea>
+  </div>
+
+  <div>
+    <label for="cover">
+      Cover
+    </label>
+
+    <input type="text" id="cover" name="cover" value="<%= @book.cover %>">
+  </div>
+
+  <div>
+    <label for="amazon">
+      Amazon
+    </label>
+
+    <textarea id="amazon" name="amazon" rows="3"><%= @book.amazon %></textarea>
+  </div>
+
+  <div>
+    <label for="donator_id">
+      Donator
+    </label>
+
+    <input type="text" id="donator_id" name="donator_id" value="<%= @book.donator_id %>">
+  </div>
+
+  <div>
+    <input id="borrowed" name="borrowed" type="checkbox" value="1" <%= "checked" if @book.borrowed %>>
+    <label for="borrowed">
+      Borrowed
+    </label>
+  </div>
+
+  <button>
+    Update book
+  </button>
+</form>
+
+<hr>
+
+<a href="/books">
+  Go back
+</a>

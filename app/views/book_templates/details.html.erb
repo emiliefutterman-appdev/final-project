@@ -1,0 +1,82 @@
+<h1>
+  Book #<%= @book.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/books">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_book_form/<%= @book.id %>">
+      Edit book
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_book/<%= @book.id %>">
+      Delete book
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%= @book.title %>
+  </dd>
+
+  <dt>
+    Author
+  </dt>
+  <dd>
+    <%= @book.author %>
+  </dd>
+
+  <dt>
+    Cover
+  </dt>
+  <dd>
+    <%= @book.cover %>
+  </dd>
+
+  <dt>
+    Amazon
+  </dt>
+  <dd>
+    <%= @book.amazon %>
+  </dd>
+
+  <dt>
+    Donator
+  </dt>
+  <dd>
+    <%= @book.donator_id %>
+  </dd>
+
+  <dt>
+    Borrowed
+  </dt>
+  <dd>
+    <%= @book.borrowed %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@book.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@book.updated_at) %> ago
+  </dd>
+</dl>
+

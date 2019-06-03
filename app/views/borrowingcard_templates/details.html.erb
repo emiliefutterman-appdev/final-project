@@ -1,0 +1,54 @@
+<h1>
+  Borrowingcard #<%= @borrowingcard.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/borrowingcards">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_borrowingcard_form/<%= @borrowingcard.id %>">
+      Edit borrowingcard
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_borrowingcard/<%= @borrowingcard.id %>">
+      Delete borrowingcard
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Borrower
+  </dt>
+  <dd>
+    <%= @borrowingcard.borrower_id %>
+  </dd>
+
+  <dt>
+    Book
+  </dt>
+  <dd>
+    <%= @borrowingcard.book_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@borrowingcard.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@borrowingcard.updated_at) %> ago
+  </dd>
+</dl>
+

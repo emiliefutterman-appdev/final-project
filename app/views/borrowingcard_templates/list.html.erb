@@ -1,0 +1,66 @@
+<h1>
+  Borrowingcard list
+</h1>
+
+<a href="/new_borrowingcard_form">
+  Add a new borrowingcard
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Borrower
+    </th>
+
+    <th>
+      Book
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @borrowingcards.each do |borrowingcard| %>
+  <tr>
+    <td>
+      <%= borrowingcard.id %>
+    </td>
+
+    <td>
+      <%= borrowingcard.borrower_id %>
+    </td>
+
+    <td>
+      <%= borrowingcard.book_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(borrowingcard.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(borrowingcard.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/borrowingcards/<%= borrowingcard.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
