@@ -32,9 +32,45 @@
     <!-- Make it responsive to small screens -->
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- END BOOTSTRAP -->
+    
   </head>
 
   <body>
+   <h1> Kellogg Free Library</h1>
+   
+    <div>
+    <a href="/home"> <i class="fab fa-kickstarter"></i>  Home </a>
+    </div>
+
+  <div> 
+    <a href="/books"> <i class="fas fa-book"></i> Collection </a> 
+  </div>
+
+  <div> 
+    <a href="/borrowingcards"> <i class="fas fa-book-reader"></i> Profile </a> 
+  </div>
+  
+  <div> 
+    <a href="/users/sign_out" data-method = "delete"> <i class="fas fa-book-reader"></i> Sign-out </a> 
+  </div>
+    
+    
+    <!-- Nav bar code:
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Kellogg Free Library</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/books">Collection</a></li>
+          <li class="nav-item"><a class="nav-link" href="/users/sign_in">Sign-in</a></li>
+        </ul>
+      </div>
+    </nav> 
+    --> 
+    
+    <div> </div>
+
 
     <!-- ↓↓↓ Your view templates all get plugged in below ↓↓↓ -->
     <%= yield %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #Home
+  match("/", { :controller => "home", :action => "landing", :via => "get" })
+  
+  
   # Routes for the Borrowingcard resource:
 
   # CREATE
