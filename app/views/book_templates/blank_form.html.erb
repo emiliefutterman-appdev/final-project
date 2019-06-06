@@ -40,11 +40,7 @@
   </div>
 
   <div>
-    <label for="donator_id">
-      Donator
-    </label>
-
-    <input type="text" id="donator_id" name="donator_id" value="<%= @book.donator_id %>">
+    <input type="hidden" id="donator_id" name="donator_id" value="<%= current_user.id %>">
   </div>
 
   <div>
