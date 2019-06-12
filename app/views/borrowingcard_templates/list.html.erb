@@ -1,64 +1,45 @@
 <h1>
-  Borrowingcard list
+  Your Borrowing History
 </h1>
-
-<a href="/new_borrowingcard_form">
-  Add a new borrowingcard
-</a>
 
 <hr>
 
+
 <table>
   <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Borrower
-    </th>
 
     <th>
       Book
     </th>
 
     <th>
-      Created at
+      Book Cover
     </th>
-
-    <th>
-      Updated at
+    
+    <th> 
+      Borrowed 
     </th>
-
-    <th>
-    </th>
+    
   </tr>
 
-  <% @borrowingcards.each do |borrowingcard| %>
+  <% @borrowingcards.where(:borrower_id => current_user.id).each do |borrowingcard| %>
   <tr>
-    <td>
-      <%= borrowingcard.id %>
-    </td>
 
     <td>
-      <%= borrowingcard.borrower_id %>
+      <%= borrowingcard.book_title.first %>
     </td>
 
-    <td>
-      <%= borrowingcard.book_id %>
+    <td> 
+      <img src="<%= borrowingcard.book_cover %>">
     </td>
-
+    
     <td>
       <%= time_ago_in_words(borrowingcard.created_at) %> ago
     </td>
 
     <td>
-      <%= time_ago_in_words(borrowingcard.updated_at) %> ago
-    </td>
-
-    <td>
-      <a href="/borrowingcards/<%= borrowingcard.id %>">
-        Show details
+      <a href="/return_book/<%= borrowingcard.book_id %>">
+        Return Book
       </a>
     </td>
   </tr>

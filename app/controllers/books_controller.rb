@@ -68,4 +68,15 @@ class BooksController < ApplicationController
 
     redirect_to("/books", { :notice => "Book deleted successfully." })
   end
+  
+ def borrow_book
+   @book = Book.where({ :id => params.fetch("id_to_borrow") }).first
+   
+   #@book.title = params.fetch("title")
+   #@book.author = params.fetch("author")
+   #@book.cover = params.fetch("cover")
+
+   render ("/book_templates/borrow_book_form.html.erb")
+  end
+  
 end

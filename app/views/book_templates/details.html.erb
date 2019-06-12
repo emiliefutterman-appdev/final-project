@@ -1,5 +1,5 @@
 <h1>
-  Book #<%= @book.id %> details
+<%= @book.title %> 
 </h1>
 
 <div>
@@ -41,42 +41,31 @@
     Cover
   </dt>
   <dd>
-    <%= @book.cover %>
+    <img src="<%= @book.cover %>">
   </dd>
 
   <dt>
-    Amazon
   </dt>
   <dd>
-    <%= @book.amazon %>
+    <a href=" <%= @book.amazon %> "> Amazon Listing </a>
   </dd>
 
   <dt>
-    Donator
   </dt>
   <dd>
-    <%= @book.donator_id %>
+    Donated by <%= @book.donator.first %> <%= time_ago_in_words(@book.created_at) %> ago
   </dd>
+  
+    
 
   <dt>
-    Borrowed
-  </dt>
-  <dd>
-    <%= @book.borrowed %>
-  </dd>
+    <td>
+      <% if @book.borrowed == false %>
+          <div> <a href="/borrow_book/<%= @book.id %>"> Borrow Book </a> </div>
+      <% else %> Checked Out
+      <% end %>
+    </td>
+  </dt>  
 
-  <dt>
-    Created at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@book.created_at) %> ago
-  </dd>
-
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@book.updated_at) %> ago
-  </dd>
-</dl>
+  
 

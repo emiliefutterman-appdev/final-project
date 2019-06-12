@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # UPDATE
   match("/existing_borrowingcard_form/:id_to_prefill", { :controller => "borrowingcards", :action => "prefilled_form", :via => "get" })
   match("/update_borrowingcard_record/:id_to_modify", { :controller => "borrowingcards", :action => "save_edits", :via => "post" })
+  match("return_book/:id_to_return", { :controller => "borrowingcards", :action => "return_book", :via => "post" })
+
+
 
   # DELETE
   match("/delete_borrowingcard/:id_to_remove", { :controller => "borrowingcards", :action => "remove_row", :via => "get" })
@@ -36,9 +39,14 @@ Rails.application.routes.draw do
   match("/existing_book_form/:id_to_prefill", { :controller => "books", :action => "prefilled_form", :via => "get" })
   match("/update_book_record/:id_to_modify", { :controller => "books", :action => "save_edits", :via => "post" })
 
+  #BORROW AND RETURN
+  match("/borrow_book/:id_to_borrow", { :controller => "books", :action => "borrow_book", :via => "get" })
+  
   # DELETE
   match("/delete_book/:id_to_remove", { :controller => "books", :action => "remove_row", :via => "get" })
 
+  
+ 
   #------------------------------
 
   devise_for :users

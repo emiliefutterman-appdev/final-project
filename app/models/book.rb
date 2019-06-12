@@ -18,11 +18,11 @@ class Book < ApplicationRecord
     
     has_one :borrowingcard, :dependent => :destroy
    
-   def Book.donator
+    def donator
        donator = self.donator_id
-       return User.where( :user_id => :donator).pluck(email)
-   end
- 
-   
+       donator_id =  User.where({ :id => donator })
+       return donator_id.pluck(:email)
+    end
+
     
 end

@@ -15,4 +15,15 @@ class Borrowingcard < ApplicationRecord
 
     belongs_to :book
 
+    def book_title
+        book = Book.where({ :id => book_id })
+        return book.pluck(:title)
+    end
+    
+    def book_cover
+        book = Book.where({ :id => book_id })
+        return book.pluck(:cover).first
+    end
+    
+    
 end

@@ -1,0 +1,63 @@
+<h1>
+  <%= @book.title %> 
+</h1>
+
+<% if @book.borrowed == false %>
+
+  <dt> 
+    <form action="/new_borrowingcard_form" method="get">
+        <div>
+    <input type="hidden" id="book_id" name="book_id" value="<%= @book.id %>">
+    <input type="hidden" id="borrower_id" name="borrower_id" value="<%= current_user.id %>">
+      </div>
+        <label for="borrowed"> Check out "<%= @book.title %>" </label>
+        <input type="hidden" id="borrowed" name="borrowed" type="checkbox" value="1" <%= "checked" if @book.borrowed %>>
+        <div> 
+          <button> Check-Out </button>
+        </div>
+    </form> 
+   </dt>
+
+<% else %> 
+
+<h2> Sorry, this book has been checked out </h2>
+  
+<% end %>
+
+<p> </p>
+<div>
+  <div>
+    <a href="/books">
+      Go back
+    </a>
+  </div>
+
+<p> </p>
+<p> </p>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%= @book.title %>
+  </dd>
+
+  <dt>
+    by
+  </dt>
+  <dd>
+    <%= @book.author %>
+  </dd>
+  
+  <dd>
+   <img src="<%= @book.cover %>">
+  </dd>
+
+
+  
+
+    
+ 
+
+  
