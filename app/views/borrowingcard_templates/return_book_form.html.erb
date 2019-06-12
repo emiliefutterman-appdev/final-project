@@ -1,0 +1,54 @@
+<h1>
+  <%= @book.title %> 
+</h1>
+
+
+  <dt> 
+    <form action="/update_borrowingcard_record" method="post">
+        <div>
+    <input type="hidden" id="book_id" name="book_id" value="<%= @book.id %>">
+      </div>
+        <label for="returned"> Return "<%= @book.title %>" </label>
+        <div> 
+          <button> Return </button>
+        </div>
+    </form> 
+   </dt>
+
+<p> </p>
+<div>
+  <div>
+    <a href="/books">
+      Go back
+    </a>
+  </div>
+
+<p> </p>
+<p> </p>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%= @book.title %>
+  </dd>
+
+  <dt>
+    by
+  </dt>
+  <dd>
+    <%= @book.author %>
+  </dd>
+  
+  <dd>
+   <img src="<%= @book.cover %>">
+  </dd>
+
+
+  
+
+    
+ 
+
+  

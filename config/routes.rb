@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   # UPDATE
   match("/existing_borrowingcard_form/:id_to_prefill", { :controller => "borrowingcards", :action => "prefilled_form", :via => "get" })
-  match("/update_borrowingcard_record/:id_to_modify", { :controller => "borrowingcards", :action => "save_edits", :via => "post" })
-  match("return_book/:id_to_return", { :controller => "borrowingcards", :action => "return_book", :via => "post" })
+  match("/update_borrowingcard_record", { :controller => "borrowingcards", :action => "save_edits", :via => "post" })
+  match("/return_book/:id_to_return", { :controller => "borrowingcards", :action => "return_book", :via => "get" })
 
 
 

@@ -1,5 +1,5 @@
 <h1>
-  Borrowingcard #<%= @borrowingcard.id %> details
+ <%= @book.title %> 
 </h1>
 
 <div>
@@ -9,18 +9,28 @@
     </a>
   </div>
 
-  <div>
-    <a href="/existing_borrowingcard_form/<%= @borrowingcard.id %>">
-      Edit borrowingcard
-    </a>
-  </div>
 
-  <div>
-    <a href="/delete_borrowingcard/<%= @borrowingcard.id %>">
-      Delete borrowingcard
-    </a>
-  </div>
-</div>
+<% if @book.borrowed == true %>
+
+  <dt> 
+    <form action="/new_borrowingcard_form" method="get">
+        <div>
+    <input type="hidden" id="book_id" name="book_id" value="<%= @book.id %>">
+    <input type="hidden" id="borrower_id" name="borrower_id" value="<%= current_user.id %>">
+      </div>
+        <label for="borrowed"> Check out "<%= @book.title %>" </label>
+        <input type="hidden" id="borrowed" name="borrowed" type="checkbox" value="1" <%= "checked" if @book.borrowed %>>
+        <div> 
+          <button> Check-Out </button>
+        </div>
+    </form> 
+   </dt>
+
+<% else %> 
+
+<h2> Sorry, this book has been checked out </h2>
+  
+<% end %>
 
 <dl>
   <dt>

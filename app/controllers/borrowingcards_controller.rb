@@ -7,6 +7,12 @@ class BorrowingcardsController < ApplicationController
 
   def details
     @borrowingcard = Borrowingcard.where({ :id => params.fetch("id_to_display") }).first
+    
+    @book = Book.where({ :id => params.fetch("book_id") }).first
+    @book.borrowed = false
+    
+    render("borrowingcard_templates/list.html.erb")
+
 
     render("borrowingcard_templates/details.html.erb")
   end
@@ -39,30 +45,13 @@ class BorrowingcardsController < ApplicationController
   end
 
   def return_book
+    @borrowingcards = Borrowingcard.all
+    @book = Book.where({ :id => params.fetch("id_to_return") }).first
     
-  
-  
+    render ("/borrowingcard_templates/return_book_form.html.erb")
   end
+
   
-  #def save_new_info
-    #@borrowingcard = Borrowingcard.new
-    #@borrowingcard.borrower_id = params.fetch("borrower_id")
-    #@borrowingcard.book_id = params.fetch("book_id")
-    
-    #@book = Book.where({ :id => params.fetch("book_id") }).first
-    #@book.borrowed = true
-
-
-    #if @borrowingcard.valid?
-      #@borrowingcard.save
-      #@book.save
-
-      ##redirect_to("/borrowingcards/" + @borrowingcard.id.to_s, { :notice => "Borrowingcard updated successfully." })
-      #redirect_to("/borrowingcards", { :notice => "Borrowingcard created successfully." })
-    #else
-      #render("borrowingcard_templates/blank_form.html.erb")
-    #end
-  #end
 
   def prefilled_form
     @borrowingcard = Borrowingcard.where({ :id => params.fetch("id_to_prefill") }).first
@@ -71,18 +60,18 @@ class BorrowingcardsController < ApplicationController
   end
 
   def save_edits
-    @borrowingcard = Borrowingcard.where({ :id => params.fetch("id_to_modify") }).first
-
-    @borrowingcard.borrower_id = params.fetch("borrower_id")
-    @borrowingcard.book_id = params.fetch("book_id")
-
-    if @borrowingcard.valid?
-      @borrowingcard.save
-
-      redirect_to("/borrowingcards/" + @borrowingcard.id.to_s, { :notice => "Borrowingcard updated successfully." })
-    else
-      render("borrowingcard_templates/prefilled_form.html.erb")
-    end
+    #@borrowingcard = Borrowingcard.where({ :id => params.fetch("book_id") }).first
+    #@borrowingcard.borrower_id = params.fetch("borrower_id")
+    #@borrowingcard.book_id = params.fetch("book_id")
+    
+    @book = Book.where({ :id => params.fetch("book_id") }).first
+    @book.borrowed = false
+    @book.save
+    
+    @borrowingcard = Borrowingcard.where({ :book_id => params.fetch("book_id") }).first
+    @borrowingcard.destroy
+  
+      redirect_to("/borrowingcards", { :notice => "Borrowingcard deleted successfully." })
   end
 
   def remove_row
